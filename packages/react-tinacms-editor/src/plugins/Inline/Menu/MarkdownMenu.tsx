@@ -16,13 +16,21 @@ limitations under the License.
 
 */
 
-import React from 'react'
-import { TableIcon } from '@tinacms/icons'
+import * as React from 'react'
+import { BoldIcon, ItalicIcon, StrikethroughIcon } from '@tinacms/icons'
 
 import { MenuButton } from '../../../components/MenuHelpers'
 
-export const MarkdownMenuItem = () => (
-  <MenuButton data-tooltip="Table" disabled>
-    <TableIcon />
-  </MenuButton>
+export const MarkdownMenu = () => (
+  <>
+    <MenuButton data-tooltip="Bold" data-side="top" disabled>
+      <BoldIcon />
+    </MenuButton>
+    <MenuButton data-tooltip="Italic" data-side="top" disabled>
+      <ItalicIcon />
+    </MenuButton>
+    <MenuButton data-tooltip="Strike" data-side="top" disabled>
+      <StrikethroughIcon />
+    </MenuButton>
+  </>
 )

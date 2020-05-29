@@ -16,13 +16,13 @@ limitations under the License.
 
 */
 
-import { Schema } from 'prosemirror-model'
-import { MarkdownTranslator, Format, DOMTranslator } from '../../translator'
+import React from 'react'
+import { TableIcon } from '@tinacms/icons'
 
-export const buildTranslator = (
-  schema: Schema,
-  format: Format = 'markdown'
-) => {
-  if (format === 'html') return DOMTranslator.fromSchema(schema)
-  return MarkdownTranslator.fromSchema(schema)
-}
+import { MenuButton } from '../../../components/MenuHelpers'
+
+export const MarkdownMenu = () => (
+  <MenuButton data-tooltip="Table" disabled>
+    <TableIcon />
+  </MenuButton>
+)

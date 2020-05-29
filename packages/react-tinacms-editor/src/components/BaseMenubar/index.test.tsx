@@ -17,12 +17,15 @@ limitations under the License.
 */
 
 import React from 'react'
-import { LinkIcon } from '@tinacms/icons'
+import { render } from '@testing-library/react'
 
-import { MenuButton } from '../../../components/MenuHelpers'
+import { BaseMenubar } from './index'
 
-export const MarkdownMenuItem = () => (
-  <MenuButton data-tooltip="Link" data-side="top" disabled>
-    <LinkIcon />
-  </MenuButton>
-)
+jest.mock('../../../context/editorState')
+
+describe('MenuBar', () => {
+  it('should render Menubar', () => {
+    render(<BaseMenubar />)
+    expect(document.getElementsByTagName('button').length).toBeGreaterThan(0)
+  })
+})

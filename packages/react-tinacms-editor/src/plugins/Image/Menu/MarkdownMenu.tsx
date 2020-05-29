@@ -16,5 +16,23 @@ limitations under the License.
 
 */
 
-export { ProsemirrorMenu } from './ProsemirrorMenu'
-export { MarkdownMenu } from './MarkdownMenu'
+import React from 'react'
+import { MediaIcon } from '@tinacms/icons'
+
+import { MenuButton } from '../../../components/MenuHelpers'
+
+interface Props {
+  uploadImages?: (files: File[]) => Promise<string[]>
+}
+
+export const MarkdownMenu: React.FC<Props> = ({ uploadImages }) =>
+  uploadImages ? (
+    <MenuButton
+      data-testid="image-menu"
+      data-tooltip="Image"
+      data-side="top"
+      disabled
+    >
+      <MediaIcon />
+    </MenuButton>
+  ) : null

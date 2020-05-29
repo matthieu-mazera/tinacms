@@ -16,26 +16,13 @@ limitations under the License.
 
 */
 
-import * as React from 'react'
-import { UnorderedListIcon, OrderedListIcon } from '@tinacms/icons'
+import { Schema } from 'prosemirror-model'
+import { MarkdownTranslator, Format, DOMTranslator } from '../../../translator'
 
-import { MenuButton } from '../../../components/MenuHelpers'
-
-export const MarkdownMenuItem = (props: any) => (
-  <>
-    <BulletList {...props} />
-    <OrderedList {...props} />
-  </>
-)
-
-const BulletList = () => (
-  <MenuButton data-tooltip="Unordered List" disabled>
-    <UnorderedListIcon />
-  </MenuButton>
-)
-
-const OrderedList = () => (
-  <MenuButton data-tooltip="Ordered List" disabled>
-    <OrderedListIcon />
-  </MenuButton>
-)
+export const buildTranslator = (
+  schema: Schema,
+  format: Format = 'markdown'
+) => {
+  if (format === 'html') return DOMTranslator.fromSchema(schema)
+  return MarkdownTranslator.fromSchema(schema)
+}

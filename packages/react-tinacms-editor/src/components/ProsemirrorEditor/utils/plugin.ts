@@ -16,13 +16,12 @@ limitations under the License.
 
 */
 
-import React from 'react'
-import { QuoteIcon } from '@tinacms/icons'
+import { Plugin } from '@tinacms/core'
 
-import { MenuButton } from '../../../components/MenuHelpers'
+function byType(__type: string) {
+  return (plugin: Plugin) => plugin.__type === __type
+}
 
-export const MarkdownMenuItem = () => (
-  <MenuButton data-tooltip="Quote" data-side="top" disabled>
-    <QuoteIcon />
-  </MenuButton>
-)
+export function findPlugins<P extends Plugin>(type: string, plugins: Plugin[]) {
+  return plugins.filter(byType(type)) as P[]
+}
